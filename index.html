@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>他不是故意的 — ADHD 特質認識小工具</title>
+<meta property="og:title" content="他不是故意的 — ADHD 特質認識小工具">
+<meta property="og:description" content="12 個溫柔的問題，陪你多懂那個「不一樣」的孩子。這不是診斷，是認識與陪伴。">
+<meta property="og:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.png">
+<meta property="og:url" content="https://meimeijazz1206.github.io/adhd-tool/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.png">
+<style>
+  :root{
+    --paper:#f6f1e7; --cream:#efe6d6; --matcha:#9caa87; --matcha-d:#7e8d6a;
+    --wood:#c8a578; --wood-d:#a9865c; --ink:#4a4038; --ink-soft:#6f6559;
+    --line:#e2d7c4; --shadow:0 10px 30px rgba(120,100,70,.10);
+    --accent:#9caa87;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:"PingFang TC","Noto Sans TC","Hiragino Sans GB","Microsoft JhengHei",system-ui,sans-serif;
+    color:var(--ink);
+    background:linear-gradient(160deg,#f8f4ec 0%,#f1e9da 60%,#eadfca 100%);
+    min-height:100vh;line-height:1.85;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:600px;margin:0 auto;padding:26px 20px 60px;}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:32px 24px;}
+  .headimg{width:100%;border-radius:16px;margin-bottom:20px;display:block;}
+  h1{font-size:29px;letter-spacing:1px;margin:0 0 6px;font-weight:700;}
+  .sub{color:var(--wood-d);font-size:15px;letter-spacing:2px;margin-bottom:20px;}
+  p{margin:0 0 16px;color:var(--ink-soft);font-size:16px;}
+  .lead{color:var(--ink);font-size:16.5px;}
+  .disclaimer{background:var(--cream);border:1px dashed var(--wood);border-radius:14px;padding:16px 18px;font-size:14px;color:var(--ink-soft);margin:22px 0;line-height:1.7;}
+  .disclaimer b{color:var(--wood-d);}
+  .btn{display:block;width:100%;border:none;cursor:pointer;background:var(--matcha);color:#fff;font-size:17px;letter-spacing:2px;padding:16px;border-radius:14px;font-weight:600;transition:.2s;margin-top:10px;font-family:inherit;box-shadow:0 6px 16px rgba(140,155,110,.30);}
+  .btn:hover{background:var(--matcha-d);}
+  .btn.ghost{background:transparent;color:var(--wood-d);border:1px solid var(--wood);box-shadow:none;}
+  .btn.ghost:hover{background:var(--cream);}
+  .hidden{display:none;}
+  .bar{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:8px;}
+  .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--wood),var(--matcha));width:0;transition:width .3s;}
+  .count{font-size:13px;color:var(--wood-d);letter-spacing:1px;margin-bottom:24px;text-align:right;}
+  .q{font-size:20px;line-height:1.75;margin:8px 0 26px;color:var(--ink);min-height:96px;}
+  .opt{display:block;width:100%;text-align:left;cursor:pointer;font-family:inherit;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:15px 18px;margin-bottom:12px;font-size:16px;color:var(--ink);transition:.15s;}
+  .opt:hover{border-color:var(--matcha);background:#fbfaf5;}
+  .opt .dot{display:inline-block;width:11px;height:11px;border-radius:99px;background:var(--line);margin-right:12px;vertical-align:middle;}
+  .opt.a .dot{background:var(--wood);}
+  .opt.b .dot{background:var(--matcha);}
+  .opt.c .dot{background:#cfd8c4;}
+  .back{background:none;border:none;color:var(--wood-d);font-size:14px;cursor:pointer;font-family:inherit;padding:6px 0;margin-top:4px;}
+  /* result */
+  .charimg{width:100%;max-width:340px;margin:0 auto 6px;display:block;border-radius:16px;}
+  .rtag{display:block;text-align:center;color:var(--wood-d);font-size:13px;letter-spacing:3px;margin:6px 0 2px;}
+  .rname{text-align:center;font-size:34px;font-weight:800;letter-spacing:2px;margin:0;color:var(--accent);}
+  .rmotto{text-align:center;font-style:italic;color:var(--accent);font-size:16px;margin:2px 0 22px;opacity:.85;}
+  .rbody{font-size:16.5px;color:var(--ink);line-height:1.9;}
+  .hlbox{background:var(--cream);border-radius:14px;padding:16px 18px;margin:16px 0;}
+  .hlbox h3{margin:0 0 6px;font-size:14px;color:var(--wood-d);letter-spacing:1px;}
+  .hlbox p{margin:0;color:var(--ink);font-size:15.5px;}
+  .res-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;margin:18px 0;}
+  .res-box h3{margin:0 0 10px;font-size:15px;color:var(--wood-d);letter-spacing:1px;}
+  .res-box ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:14.5px;line-height:1.85;}
+  .center-line{text-align:center;font-size:16.5px;color:var(--ink);margin:22px 0 6px;line-height:1.9;}
+  .foot{text-align:center;color:var(--wood-d);font-size:13px;letter-spacing:2px;margin-top:24px;line-height:1.9;}
+  .brand{font-size:14px;color:var(--wood-d);letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 開場 -->
+  <section id="intro" class="card">
+    <img class="headimg" src="header.png" alt="" onerror="this.style.display='none'">
+    <h1>他不是故意的</h1>
+    <div class="sub">ADHD × ASD 特質認識小工具</div>
+    <p class="lead">你是不是也常常在想——<br>「他到底是故意的，還是真的做不到？」</p>
+    <p>這裡有 12 個很多家長都熟悉的日常情境。花三分鐘，陪自己看看你家的孩子，也看看他比較像哪一種小角色。</p>
+    <p>這不是為了替孩子貼標籤，而是幫你多懂他一點，也讓你知道——你不孤單。</p>
+
+    <div class="disclaimer">
+      <b>請先讀這個：</b>這是一個<b>認識與陪伴</b>的小工具，<b>不是診斷</b>。
+      勾選結果不能代替專業判斷。真正的 ADHD／ASD 評估，一定要由
+      <b>兒童心智科醫師或臨床心理師</b>透過完整衡鑑進行。
+      如果這些情境讓你或孩子感到辛苦，請帶著它去找專業聊聊。
+    </div>
+
+    <button class="btn" onclick="start()">開始，慢慢看</button>
+  </section>
+
+  <!-- 題目 -->
+  <section id="quiz" class="card hidden">
+    <div class="bar"><i id="fill"></i></div>
+    <div class="count"><span id="cur">1</span> / 12</div>
+    <div class="q" id="qtext"></div>
+    <button class="opt a" onclick="answer(2)"><span class="dot"></span>經常這樣</button>
+    <button class="opt b" onclick="answer(1)"><span class="dot"></span>偶爾</button>
+    <button class="opt c" onclick="answer(0)"><span class="dot"></span>幾乎不會</button>
+    <button class="back" id="backBtn" onclick="back()">← 上一題</button>
+  </section>
+
+  <!-- 結果 -->
+  <section id="result" class="card hidden">
+    <img class="charimg" id="charimg" src="" alt="" onerror="this.style.display='none'">
+    <span class="rtag" id="rtag"></span>
+    <h2 class="rname" id="rname" style="margin:0;"></h2>
+    <div class="rmotto" id="rmotto"></div>
+
+    <div class="rbody" id="rdesc"></div>
+
+    <div class="hlbox"><h3>他的亮點</h3><p id="rlight"></p></div>
+    <div class="hlbox"><h3>你可以這樣陪他</h3><p id="rtip"></p></div>
+
+    <div class="disclaimer">
+      <b>再說一次，因為很重要：</b>這個結果<b>不是診斷</b>，也不代表孩子「有問題」。
+      如果這些特質讓孩子或你在生活、學校裡很辛苦，真正用來評估的專業量表叫
+      <b>SNAP-IV</b>——請帶著你的觀察，去找<b>兒童心智科醫師或臨床心理師</b>，由他們協助判斷。
+      早一點理解，是為了讓陪伴更省力。
+    </div>
+
+    <div class="res-box">
+      <h3>如果你想再往前一步</h3>
+      <ul>
+        <li>各縣市<b>兒童發展早期療育通報轉介中心</b>（搜尋你所在縣市名稱）</li>
+        <li>醫院<b>兒童心智科／兒童青少年精神科</b>門診</li>
+        <li>孩子的學校老師、輔導室，也是最早看見狀況的人</li>
+      </ul>
+    </div>
+
+    <p class="center-line">這些特質，不是缺點，<br>是他認識世界的方式。</p>
+
+    <button class="btn ghost" onclick="location.reload()">再測一次</button>
+
+    <div class="foot">
+      截圖，把你家的小角色分享給也在努力的爸媽 ♡<br>
+      ADHD × ASD 親子創作系列 · <span class="brand">sense.designmei</span>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // d: 領域 A=注意力(Cloudy) B=行動衝動(Sparky) C=堅持固著(Pebbo)
+  const QS = [
+    {t:"你說「再五分鐘」，他好像永遠感覺不到那是多久。", d:"A"},
+    {t:"話還沒說完、規則還沒聽完，他的身體就先衝出去了。", d:"B"},
+    {t:"事情突然改變，他會整個慌掉，甚至崩潰。", d:"C"},
+    {t:"你才剛提醒過，他一轉身，就忘得一乾二淨。", d:"A"},
+    {t:"他很難好好坐著，總是動來動去、爬上爬下。", d:"B"},
+    {t:"他喜歡熟悉的東西和固定的順序，換了就會不安。", d:"C"},
+    {t:"你在跟他說話，他的眼神卻好像飄到很遠的地方。", d:"A"},
+    {t:"那句話不趕快說出來他好像就會忘，於是常常插嘴。", d:"B"},
+    {t:"當他認定一件事，很難說服他改變或放手。", d:"C"},
+    {t:"「開始」一件事，對他來說像要推動一顆很重的石頭。", d:"A"},
+    {t:"同樣的坑，提醒過很多次，他還是會再一頭栽進去。", d:"B"},
+    {t:"別人覺得還好的聲音或觸感，對他卻像被針刺到。", d:"C"}
+  ];
+
+  const CHARS = {
+    Cloudy:{
+      tag:"雲朵型 · 注意力飄", name:"Cloudy", motto:"「嗯…我的想法飄走了」",
+      color:"#7fa4c4", img:"cloudy.png",
+      desc:"你家孩子的腦袋，像一片會飄的雲。他不是不專心，而是同時裝了太多想法、太多畫面，一不小心就飄走了。時間對他很模糊，提醒過的事也常常轉身就忘。",
+      light:"雲飄得遠，也看得遠——這樣的孩子，往往想像力特別豐富、對世界特別敏感。",
+      tip:"與其一直喊他回神，不如把時間變成看得見的（沙漏、計時器），把大事拆成一步一步。"
+    },
+    Sparky:{
+      tag:"火花型 · 行動衝動", name:"Sparky", motto:"「先衝再說！」",
+      color:"#d59a34", img:"sparky.png",
+      desc:"你家孩子像一道停不下來的閃電。身體常常比腦袋快一步，話還沒聽完就衝出去，那句話不趕快說就會忘，所以常常插嘴。他不是故意的，是能量太滿、按鈕太靈敏。",
+      light:"衝得快，也代表行動力和熱情滿格——這樣的孩子，常常是最有勇氣、最敢嘗試的那一個。",
+      tip:"與其壓住他的衝，不如給他安全的出口（先動一動再坐下），並練習在行動前多留三秒。"
+    },
+    Pebbo:{
+      tag:"小石型 · 堅持固著", name:"Pebbo", motto:"「我還想再堅持一下」",
+      color:"#8a917a", img:"pebbo.png",
+      desc:"你家孩子像一顆有自己重量的小石頭。他喜歡熟悉、喜歡固定順序，事情一改變就會慌；認定的事很難被說服。別人覺得還好的聲音或觸感，對他卻可能像被針刺。",
+      light:"堅持的另一面，是專注與忠誠——這樣的孩子，一旦投入自己在乎的事，會做得又深又久。",
+      tip:"改變前先預告、給他一點準備時間；他的堅持不是唱反調，是需要安全感。"
+    },
+    Raini:{
+      tag:"彩虹型 · 每種都有一點", name:"Raini", motto:"「我每一種都有一點點」",
+      color:"#b09ac2", img:"raini.png",
+      desc:"你家孩子像一道彩虹——雲的飄、火花的衝、小石的堅持，每一種可能都有一點點，沒有特別偏哪一邊。這很常見，也代表他很立體、很難被一句話定義。",
+      light:"每種特質都有一點，表示他的世界很豐富，也表示他更需要你依當下的樣子，彈性地陪他。",
+      tip:"不用急著把他歸類——今天像雲就給空間，像火花就給出口，像小石就給預告。"
+    }
+  };
+
+  let i = 0;
+  const ans = new Array(QS.length).fill(null);
+
+  function start(){
+    document.getElementById('intro').classList.add('hidden');
+    document.getElementById('quiz').classList.remove('hidden');
+    render();
+  }
+  function render(){
+    document.getElementById('qtext').textContent = QS[i].t;
+    document.getElementById('cur').textContent = i+1;
+    document.getElementById('fill').style.width = (i/QS.length*100)+'%';
+    document.getElementById('backBtn').style.visibility = i===0 ? 'hidden':'visible';
+  }
+  function answer(v){
+    ans[i] = v;
+    if(i < QS.length-1){ i++; render(); } else finish();
+  }
+  function back(){ if(i>0){ i--; render(); } }
+
+  function finish(){
+    document.getElementById('fill').style.width='100%';
+    const s = {A:0,B:0,C:0};
+    QS.forEach((q,idx)=> s[q.d] += (ans[idx]||0));
+    const pairs = [["A",s.A],["B",s.B],["C",s.C]].sort((x,y)=>y[1]-x[1]);
+    let key;
+    if(pairs[0][1] === pairs[1][1]){             // 第一名與第二名同分（真正的平手）→ 混合
+      key = "Raini";
+    } else {
+      key = {A:"Cloudy",B:"Sparky",C:"Pebbo"}[pairs[0][0]];
+    }
+    const c = CHARS[key];
+    document.documentElement.style.setProperty('--accent', c.color);
+    const im = document.getElementById('charimg');
+    im.src = c.img; im.style.display='';
+    document.getElementById('rtag').textContent = c.tag;
+    document.getElementById('rname').textContent = c.name;
+    document.getElementById('rmotto').textContent = c.motto;
+    document.getElementById('rdesc').textContent = c.desc;
+    document.getElementById('rlight').textContent = c.light;
+    document.getElementById('rtip').textContent = c.tip;
+
+    document.getElementById('quiz').classList.add('hidden');
+    document.getElementById('result').classList.remove('hidden');
+    window.scrollTo(0,0);
+  }
+</script>
+</body>
+</html>
