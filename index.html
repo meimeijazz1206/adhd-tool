@@ -6,11 +6,11 @@
 <title>他不是故意的 — ADHD 特質認識小工具</title>
 <meta property="og:title" content="他不是故意的 — ADHD 特質認識小工具">
 <meta property="og:description" content="12 個溫柔的問題，陪你多懂那個「不一樣」的孩子。這不是診斷，是認識與陪伴。">
-<meta property="og:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.png">
+<meta property="og:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.jpg">
 <meta property="og:url" content="https://meimeijazz1206.github.io/adhd-tool/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.png">
+<meta name="twitter:image" content="https://meimeijazz1206.github.io/adhd-tool/preview.jpg">
 <style>
   :root{
     --paper:#f6f1e7; --cream:#efe6d6; --matcha:#9caa87; --matcha-d:#7e8d6a;
@@ -73,7 +73,7 @@
 
   <!-- 開場 -->
   <section id="intro" class="card">
-    <img class="headimg" src="header.png" alt="" onerror="this.style.display='none'">
+    <img class="headimg" src="header.jpg" alt="" onerror="this.style.display='none'">
     <h1>他不是故意的</h1>
     <div class="sub">ADHD × ASD 特質認識小工具</div>
     <p class="lead">你是不是也常常在想——<br>「他到底是故意的，還是真的做不到？」</p>
@@ -131,6 +131,7 @@
 
     <p class="center-line">這些特質，不是缺點，<br>是他認識世界的方式。</p>
 
+    <button class="btn" onclick="shareResult()">分享我家的小角色</button>
     <button class="btn ghost" onclick="location.reload()">再測一次</button>
 
     <div class="foot">
@@ -190,7 +191,23 @@
   };
 
   let i = 0;
+  let curChar = null;
   const ans = new Array(QS.length).fill(null);
+
+  function shareResult(){
+    const url = "https://meimeijazz1206.github.io/adhd-tool/";
+    const name = curChar ? curChar.name : "";
+    const txt = "我測到我家孩子是「" + name + "」型！你家孩子是哪一種小角色？來測測看 👇";
+    if(navigator.share){
+      navigator.share({title:"他不是故意的 · ADHD 特質認識小工具", text:txt, url:url}).catch(function(){});
+    } else if(navigator.clipboard){
+      navigator.clipboard.writeText(txt + " " + url).then(function(){
+        alert("已複製分享文字＋連結，貼到哪都能分享 🤍");
+      });
+    } else {
+      prompt("複製這段分享：", txt + " " + url);
+    }
+  }
 
   function start(){
     document.getElementById('intro').classList.add('hidden');
@@ -221,6 +238,7 @@
       key = {A:"Cloudy",B:"Sparky",C:"Pebbo"}[pairs[0][0]];
     }
     const c = CHARS[key];
+    curChar = c;
     document.documentElement.style.setProperty('--accent', c.color);
     const im = document.getElementById('charimg');
     im.src = c.img; im.style.display='';
